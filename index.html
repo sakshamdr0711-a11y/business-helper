@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Business Helper</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="hero">
+      <div>
+        <h1>Business Helper</h1>
+
+        <p>Client Reminder Dashboard</p>
+      </div>
+
+      <div class="hero-actions">
+        <button id="notificationBtn" onclick="enableNotifications()">
+          🔔 Enable Notifications
+        </button>
+
+        <div id="clock"></div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <h2 id="totalClients">0</h2>
+
+        <p>Total Clients</p>
+      </div>
+
+      <div class="stat">
+        <h2 id="todayCount">0</h2>
+
+        <p>Today's</p>
+      </div>
+
+      <div class="stat">
+        <h2 id="upcomingCount">0</h2>
+
+        <p>Upcoming</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Add Client</h2>
+
+      <input id="name" placeholder="Client Name" />
+
+      <input id="phone" placeholder="Phone Number" />
+
+      <select id="type">
+        <option>First</option>
+
+        <option>Second</option>
+
+        <option>Third</option>
+      </select>
+
+      <input id="date" type="date" />
+
+      <input id="time" type="time" />
+
+      <select id="freq">
+        <option>Once</option>
+
+        <option>Daily</option>
+
+        <option>Weekly</option>
+
+        <option>Monthly</option>
+      </select>
+
+      <textarea id="notes" placeholder="Notes"></textarea>
+
+      <div class="form-actions">
+        <button onclick="saveClient()" id="saveBtn">Save Client</button>
+        <button onclick="clearForm()" type="button" class="secondary">
+          Clear
+        </button>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <input id="search" placeholder="🔍 Search Client..." onkeyup="render()" />
+
+      <div class="filter">
+        <button class="filter-btn">Filter ▼</button>
+
+        <div class="filter-menu">
+          <div onclick="setFilter('all')">All</div>
+
+          <div onclick="setFilter('today')">Today</div>
+
+          <div onclick="setFilter('upcoming')">Upcoming</div>
+
+          <div onclick="setFilter('attended')">Attended</div>
+
+          <div onclick="setFilter('missed')">Missed</div>
+        </div>
+      </div>
+      <div class="backup-actions">
+        <button onclick="exportData()">💾 Export Backup</button>
+
+        <label class="import-btn">
+          📥 Import Backup
+          <input
+            type="file"
+            id="importFile"
+            accept=".json"
+            onchange="importData(event)"
+          />
+        </label>
+      </div>
+    </div>
+
+    <h2 style="margin: 30px 0 10px">📋 Client List</h2>
+    <div id="clients"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
